@@ -1,0 +1,35 @@
+# IDE
+/.idea
+/.awcache
+/.vscode
+
+# misc
+npm-debug.log
+.DS_Store
+
+# tests
+/test
+/coverage
+/.nyc_output
+
+# source
+lib
+sample
+index.ts
+package-lock.json
+tsconfig.json
+.prettierrc
+.commitlintrc.json
+.eslintignore
+.eslintrc.js
+
+# github
+.github
+CONTRIBUTING.md
+CODE_OF_CONDACT.md
+SECURITY.md
+renovate.json
+.release-it.json
+
+# ci
+.circleci
