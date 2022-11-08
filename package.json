@@ -1,6 +1,6 @@
 {
   "name": "@nestql/bull-board",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Bull Dashboard for @nestjs/bull",
   "main": "index.js",
   "scripts": {
