@@ -12,7 +12,7 @@
 
 Dev friendly integration for Nest.js and Bull Dashboard – UI built to help you visually manage your [@nestjs/bull](https://www.npmjs.com/package/@nestjs/bull) or [@nestjs/bullMQ](https://www.npmjs.com/package/@nestjs/bullmq) queues and their jobs. With this library you get a beautiful UI for visualizing what's happening with each job in your queues, their status and some actions that will enable you to get the job done.
 
-> ⚠️ THIS PACKAGE ONLY WORK WITH [@nestjs/bull](https://github.com/nestjs/bull) AND [@nestjs/platform-express](https://www.npmjs.com/package/@nestjs/platform-express) FOR NOW ⚠️
+> ⚠️ THIS PACKAGE ONLY WORK WITH [@nestjs/bull](https://github.com/nestjs/bull) AND [@nestjs/platform-express](https://www.npmjs.com/package/@nestjs/platform-express) NOW ⚠️
 
 ## Installation
 
@@ -24,7 +24,7 @@ $ npm i --save @nestql/bull-board
 
 Add module to your AppModule imports:
 
-> 🎁 A working example is available at [sample folder](https://github.com/nestql/bull-board/tree/master/sample).
+> 🎁 A working example is available at [sample folder](https://github.com/nestql/bull-board/tree/main/sample).
 
 ```typescript
 import { Module } from '@nestjs/common';
