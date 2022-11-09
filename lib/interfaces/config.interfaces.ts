@@ -55,7 +55,7 @@ export interface BullBoardConfig {
      * })
      * ```
      * */
-    add: QueueConfig[];
+    add?: QueueConfig[];
     /*
      * Manually remove queues from the board. Useful with `queues.autoAdd: true`
      * @example
@@ -65,7 +65,7 @@ export interface BullBoardConfig {
      * })
      * ```
      * */
-    remove: QueueConfig[];
+    remove?: QueueConfig[];
     /*
      * Manually replace queues on the board. Use with `queues.autoAdd: true` to set `QueueAdapter` options for specified queues
      * @example
@@ -78,7 +78,7 @@ export interface BullBoardConfig {
      * })
      * ```
      * */
-    replace: QueueConfig[];
+    replace?: QueueConfig[];
   };
   guard?: Type<IAuthGuard>;
 }
