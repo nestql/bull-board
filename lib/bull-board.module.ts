@@ -62,9 +62,13 @@ export class BullBoardModule implements OnApplicationBootstrap {
         @Response() res: express.Response,
         @Next() next: express.NextFunction,
       ) {
-        const mountPath = `/${this.app.getGlobalPrefix()}/${
-          this.moduleConfig.config.path
-        }`;
+        const mountPath =
+          this.app.getGlobalPrefix().length == 0
+            ? ''
+            : `/${this.app.getGlobalPrefix()}` +
+              '/' +
+              this.moduleConfig.config.path;
+
         const router = this.moduleConfig.adapter
           .setBasePath(mountPath)
           .getRouter();
