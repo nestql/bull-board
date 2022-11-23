@@ -33,6 +33,10 @@ import {
 import { ExpressAdapter as NestExpressAdapter } from '@nestjs/platform-express';
 import * as express from 'express';
 
+const genMountPath = (app: ApplicationConfig, path: string) =>
+  (app.getGlobalPrefix().length == 0 ? '' : `/${app.getGlobalPrefix()}`) +
+  `/${path}`;
+
 @Module({})
 export class BullBoardModule implements OnApplicationBootstrap {
   constructor(
@@ -62,12 +66,7 @@ export class BullBoardModule implements OnApplicationBootstrap {
         @Response() res: express.Response,
         @Next() next: express.NextFunction,
       ) {
-        const mountPath =
-          this.app.getGlobalPrefix().length == 0
-            ? ''
-            : `/${this.app.getGlobalPrefix()}` +
-              '/' +
-              this.moduleConfig.config.path;
+        const mountPath = genMountPath(this.app, this.moduleConfig.config.path);
 
         const router = this.moduleConfig.adapter
           .setBasePath(mountPath)
@@ -90,9 +89,7 @@ export class BullBoardModule implements OnApplicationBootstrap {
           provide: MODULE_CONFIG_TOKEN,
           useFactory: (app: ApplicationConfig) => {
             const serverAdapter = new ExpressAdapter();
-            serverAdapter.setBasePath(
-              `/${app.getGlobalPrefix()}/${bullBoardConfig.path}`,
-            );
+            serverAdapter.setBasePath(genMountPath(app, bullBoardConfig.path));
 
             const bullBoard: BullBoard = createBullBoard({
               queues: [],
@@ -125,9 +122,10 @@ export class BullBoardModule implements OnApplicationBootstrap {
         host = `http://${hostName}:${port}`;
       }
       Logger.log(
-        `🦬 Explore bull on the board: ${host}/${this.app.getGlobalPrefix()}/${
-          this.moduleConfig.config.path
-        }`,
+        `🦬 Explore bull on the board: ${host}${genMountPath(
+          this.app,
+          this.moduleConfig.config.path,
+        )}`,
       );
     });
   }
